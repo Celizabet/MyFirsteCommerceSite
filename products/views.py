@@ -90,5 +90,5 @@ class ProtectedListView(LoginRequiredMixin, TemplateTitleMixin, ListView):
         return Product.objects.filter(user=self.request.user)
     
     def get_succes_url(self):
-        return "/products/products"
+        return "/products/my-products"
     
