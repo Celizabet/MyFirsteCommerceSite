@@ -1,0 +1,614 @@
+[
+{
+    "model": "ecommerce.productmodel",
+    "pk": 1,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Laptop - Apple MacBook Air",
+        "price": 17900.0,
+        "description": "Muy ligera, renovada con el chip M1 de Apple. \r\nResolución HD.\r\nCPU hasta 3.5 veces más rápido.",
+        "seller": "Apple",
+        "color": "Gris",
+        "product_dimensions": 13.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 2,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Tablet Apple iPad",
+        "price": 7300.0,
+        "description": "Procesador Apple A13 Bionic\r\nAlmacenamiento 64GB\r\nDesbloqueo por lector de huella digital\r\nram 3GB",
+        "seller": "Apple",
+        "color": "Gris",
+        "product_dimensions": 17.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 3,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Earphones",
+        "price": 8000.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 5,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Backpack",
+        "price": 600.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 6,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Mouse",
+        "price": 200.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 9,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Librero",
+        "price": 4500.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 11,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Funko pop! Barbie",
+        "price": 800.0,
+        "description": "Figura coleccionable hecha de vinilo\r\nLanzamiento original 2020\r\nNúmero de modelo 51456",
+        "seller": "D3 Gamers",
+        "color": "N/A",
+        "product_dimensions": 9.52,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 12,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Funko pop! Harry Potter",
+        "price": 600.0,
+        "description": "Figura de colección hecha de Vinil\r\nContiene 3 piezas remobibles\r\nNúmero de modelo 65652",
+        "seller": "D3 Gamers",
+        "color": "Multicolor",
+        "product_dimensions": 9.3,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 13,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Funko Pop! Game of Thrones",
+        "price": 500.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 15,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T02:55:49.530Z",
+        "updated": "2023-09-19T02:55:49.549Z",
+        "publish_timestamp": null,
+        "title": "Producto barato",
+        "price": 200.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 16,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.912Z",
+        "updated": "2023-09-19T20:04:09.912Z",
+        "publish_timestamp": null,
+        "title": "Producto 1",
+        "price": 250.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 17,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.912Z",
+        "updated": "2023-09-19T20:04:09.912Z",
+        "publish_timestamp": null,
+        "title": "Producto 2",
+        "price": 450.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 18,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 3",
+        "price": 650.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 19,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 4",
+        "price": 850.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 20,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 5",
+        "price": 1050.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 21,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 6",
+        "price": 1250.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 22,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 7",
+        "price": 1450.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 23,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 8",
+        "price": 1650.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 24,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-19T20:04:09.913Z",
+        "updated": "2023-09-19T20:04:09.913Z",
+        "publish_timestamp": null,
+        "title": "Producto 9",
+        "price": 1850.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": null
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 25,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T00:52:42.306Z",
+        "updated": "2023-09-20T00:52:42.307Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 26,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T00:59:19.879Z",
+        "updated": "2023-09-20T00:59:19.879Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 200.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 27,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:02:32.568Z",
+        "updated": "2023-09-20T01:02:32.568Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 200.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 28,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:03:30.817Z",
+        "updated": "2023-09-20T01:03:30.817Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 29,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:04:10.762Z",
+        "updated": "2023-09-20T01:04:10.762Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 30,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:15:19.196Z",
+        "updated": "2023-09-20T01:15:19.196Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 31,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:15:53.327Z",
+        "updated": "2023-09-20T01:15:53.327Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 32,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:16:21.020Z",
+        "updated": "2023-09-20T01:16:21.020Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 33,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:27:39.333Z",
+        "updated": "2023-09-20T01:27:39.333Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 34,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:28:01.575Z",
+        "updated": "2023-09-20T01:28:01.575Z",
+        "publish_timestamp": null,
+        "title": "Producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-2"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 35,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:34:40.813Z",
+        "updated": "2023-09-20T01:34:40.813Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-1"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 36,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:35:11.273Z",
+        "updated": "2023-09-20T01:35:11.273Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-1"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 37,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:45:43.859Z",
+        "updated": "2023-09-20T01:45:43.860Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-1"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 38,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:52:09.374Z",
+        "updated": "2023-09-20T01:52:09.374Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-1"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 39,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:52:28.109Z",
+        "updated": "2023-09-20T01:52:28.110Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-1"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 40,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:55:35.555Z",
+        "updated": "2023-09-20T01:55:35.555Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-15"
+    }
+},
+{
+    "model": "ecommerce.productmodel",
+    "pk": 41,
+    "fields": {
+        "state": "BR",
+        "timestamp": "2023-09-20T01:56:06.851Z",
+        "updated": "2023-09-20T01:56:06.851Z",
+        "publish_timestamp": null,
+        "title": "producto test slug",
+        "price": 100.0,
+        "description": "",
+        "seller": "",
+        "color": "",
+        "product_dimensions": 0.0,
+        "slug": "producto-test-slug-16"
+    }
+}
+]

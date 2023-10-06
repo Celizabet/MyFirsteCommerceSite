@@ -1,0 +1,18 @@
+{% include "ecommerce/messages.html" %}
+
+<h1>
+    {{ product.title }}
+</h1></br> 
+
+<body>
+    <p>
+        <b> PRECIO </b>{{ product.price }}
+        <b> VENDEDOR </b>{{ product.seller }}</br>
+        <b> COLOR </b>{{ product.color }}
+        <b> DIMENSIONES </b>{{ product.product_dimensions }}       
+    </p></br> 
+    <p>
+        <b> DESCRIPCIÓN </b></br>
+        {{ product.description }}
+    </p>
+</body>
