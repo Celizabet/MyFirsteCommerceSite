@@ -3,12 +3,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
- 
+from rest_framework import generics
+
 from ecommerce.models import ProductModel
 from .serializer import ApiSerializer
+#from products.models import Product
+#from products.serializer import ProductSerializer
+from .pagination import ProductModelPagination
 
 class ProductAPIView(APIView):
     """Lists all products, or creates a new one"""
+    queryset = ProductModel.objects.all()
+    serializer_class = ApiSerializer
+    pagination_class = ProductModelPagination
 
     def get(self, request, format=None): 
         products = ProductModel.objects.all()
@@ -51,10 +58,12 @@ class ProductDetailAPIView(APIView):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
 #ViewSet
-class ProductApiViewSet(ViewSet):
+class ProductApiViewSet(ViewSet, generics.ListAPIView):
     """API ViewSet"""
+    queryset = ProductModel.objects.all()
+    serializer_class = ApiSerializer
+    pagination_class = ProductModelPagination
 
     def list(self, request, format=None):
         """Enlists the products stored in the DB""" 
@@ -97,3 +106,10 @@ class ProductApiViewSet(ViewSet):
         product = self.get_object_pk(pk)
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+#Pagination
+class ProductAPIListView(generics.ListAPIView):
+    queryset = ProductModel.objects.all()
+    serializer_class = ApiSerializer
+    pagination_class = ProductModelPagination
+
