@@ -4,18 +4,17 @@ from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
 from rest_framework import generics
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
+from django.contrib.auth.models import User
 from ecommerce.models import ProductModel
-from .serializer import ApiSerializer
-#from products.models import Product
-#from products.serializer import ProductSerializer
+from .serializer import ApiSerializer, UserModelSerializer
 from .pagination import ProductModelPagination
+from .permissions import OwnerUser
 
 class ProductAPIView(APIView):
     """Lists all products, or creates a new one"""
-    queryset = ProductModel.objects.all()
-    serializer_class = ApiSerializer
-    pagination_class = ProductModelPagination
 
     def get(self, request, format=None): 
         products = ProductModel.objects.all()
@@ -59,11 +58,8 @@ class ProductDetailAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 #ViewSet
-class ProductApiViewSet(ViewSet, generics.ListAPIView):
+class ProductApiViewSet(ViewSet):
     """API ViewSet"""
-    queryset = ProductModel.objects.all()
-    serializer_class = ApiSerializer
-    pagination_class = ProductModelPagination
 
     def list(self, request, format=None):
         """Enlists the products stored in the DB""" 
@@ -107,9 +103,32 @@ class ProductApiViewSet(ViewSet, generics.ListAPIView):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-#Pagination
+#Pagination/ Authentication
 class ProductAPIListView(generics.ListAPIView):
     queryset = ProductModel.objects.all()
     serializer_class = ApiSerializer
     pagination_class = ProductModelPagination
+    permission_classes = [
+        IsAuthenticated
+    ]
 
+
+#Vista del perfil del usuario    
+class UserProfile(APIView):
+    """Allows to 'GET' a single user profile"""
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [
+        OwnerUser
+    ]
+
+    def get_object_pk(self, pk):
+        "gets a pk UserModel instance"
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise Http404
+        
+    def get(self, request, pk, format=None):
+        user_profile = self.get_object_pk(pk)
+        serializer = UserModelSerializer(user_profile)
+        return Response(serializer.data)
