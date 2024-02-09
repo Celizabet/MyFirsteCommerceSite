@@ -5,23 +5,17 @@ from bs4 import BeautifulSoup
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
-#driver = webdriver.Chrome(executable_path='<path-to-chrome>', options=options)
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 def get_product_list():
-    #Usar URL de los productos requeridos
     url = "https://www.amazon.com.mx/s?k=funko+pop&crid=MWVW5UNW0707&sprefix=%2Caps%2C393&ref=nb_sb_ss_recent_1_0_recent"
     driver.get(url)
 
-    #Con BeautifulSoup accedemos al código fuente de la página
-    soup = BeautifulSoup(driver.page_source, "lxml") #Lo parseamos con el fromato lxml
-    # doble click a la clase, copiar y pegar
+    soup = BeautifulSoup(driver.page_source, "lxml") 
     a_class = "a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"
-    # encuentra todas las 'a' en donde la clase sea a_class
     a_tags = soup.find_all("a", class_=a_class)
 
     for a in a_tags:
-        #if "$" not in a.text:
         title = a.text.replace("\n", "")
         link = a.get("href") 
         print("título: ", title)
