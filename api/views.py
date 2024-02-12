@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
 from rest_framework import generics
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import authentication, permissions
+from django.shortcuts import get_object_or_404 
 
 from django.contrib.auth.models import User
 from ecommerce.models import ProductModel
@@ -109,17 +109,22 @@ class ProductAPIListView(generics.ListAPIView):
     serializer_class = ApiSerializer
     pagination_class = ProductModelPagination
     permission_classes = [
-        IsAuthenticated
+        permissions.IsAuthenticated
     ]
 
 
 #Vista del perfil del usuario    
 class UserProfile(APIView):
     """Allows to 'GET' a single user profile"""
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [
         OwnerUser
     ]
+
+    def get_object(self):
+        obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
+        self.check_object_permissions(self.request, obj)
+        return obj
 
     def get_object_pk(self, pk):
         "gets a pk UserModel instance"
@@ -128,7 +133,7 @@ class UserProfile(APIView):
         except User.DoesNotExist:
             raise Http404
         
-    def get(self, request, pk, format=None):
+    def get_object(self, request, pk, format=None):
         user_profile = self.get_object_pk(pk)
         serializer = UserModelSerializer(user_profile)
         return Response(serializer.data)
