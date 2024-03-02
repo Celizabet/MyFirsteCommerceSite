@@ -4,14 +4,14 @@ from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status
 from rest_framework import generics
-from rest_framework import authentication, permissions
+from rest_framework import permissions
 from django.shortcuts import get_object_or_404 
 
 from django.contrib.auth.models import User
 from ecommerce.models import ProductModel
 from .serializer import ApiSerializer, UserModelSerializer
 from .pagination import ProductModelPagination
-from .permissions import OwnerUser
+from .permissions import IsOwnerOrReadOnly
 
 class ProductAPIView(APIView):
     """Lists all products, or creates a new one"""
@@ -116,24 +116,30 @@ class ProductAPIListView(generics.ListAPIView):
 #Vista del perfil del usuario    
 class UserProfile(APIView):
     """Allows to 'GET' a single user profile"""
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [
-        OwnerUser
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
     ]
 
-    def get_object(self):
-        obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+    def get_object(self, pk):
+        obj = get_object_or_404(User, pk=pk)
         self.check_object_permissions(self.request, obj)
         return obj
-
-    def get_object_pk(self, pk):
-        "gets a pk UserModel instance"
-        try:
-            return User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
-        
-    def get_object(self, request, pk, format=None):
-        user_profile = self.get_object_pk(pk)
+    
+    def get(self, request, pk, format=None):
+        user_profile = self.get_object(pk)
         serializer = UserModelSerializer(user_profile)
         return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        """Updates a single product from the DB"""
+        user_profile = self.get_object(pk)
+        serializer = UserModelSerializer(user_profile, data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

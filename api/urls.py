@@ -17,5 +17,5 @@ urlpatterns = [
     path("<int:pk>", ProductDetailAPIView.as_view(), name="api_detail"),
     path("", include(router.urls)),
     path("pagination-view", ProductAPIListView.as_view(), name="pagination_view"),
-    path("user-profile/<int:pk>", UserProfile.as_view(), name="user-profile")
+    path("user-profile/<int:pk>", UserProfile.as_view(), name="user-profile") # <<----- Actividad
 ]
