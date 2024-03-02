@@ -1,71 +1,145 @@
-from rest_framework.decorators import api_view
+from rest_framework.viewsets import ViewSet
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token 
+from django.http import Http404
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework import generics
+from rest_framework import permissions
+from django.shortcuts import get_object_or_404 
 
-from .serializer import ResgistrationSerializer
+from django.contrib.auth.models import User
+from ecommerce.models import ProductModel
+from .serializer import ApiSerializer, UserModelSerializer
+from .pagination import ProductModelPagination
+from .permissions import IsOwnerOrReadOnly
 
+class ProductAPIView(APIView):
+    """Lists all products, or creates a new one"""
 
-@api_view(['POST', ])
-def registration_view(request):
-
-    if request.method == 'POST':
-        serializer = ResgistrationSerializer(data=request.data)
-        data = {} 
-
-        if serializer.is_valid():
-            account = serializer.save() 
-            
-            data["response"] = "Succesful Registered" 
-            data["username"] = account.username 
-            data["email"] = account.email 
-
-            #token = Token.objects.get(user=account).key
-            #data["token"] = token 
-
-            refresh_token = RefreshToken.for_user(account)
-            data["token"] = {
-                "refresh":str(refresh_token),
-                "access":str(refresh_token.access_token)
-            }
-            
-        else:
-            data = serializer.errors 
-
-        return Response(data) 
+    def get(self, request, format=None): 
+        products = ProductModel.objects.all()
+        serializer = ApiSerializer(products, many=True)
+        return Response(serializer.data)
     
-# LogOut-View
-@api_view(["POST",])
-def logout_view(request):
-
-    if request.method == "POST":
-        request.user.auth_token.delete()
-        return Response(status=status.HTTP_200_OK)
-
-
-# Registration View - For the Profile
-@api_view(['POST', ])
-def user_profile_registration_view(request):
-
-    if request.method == 'POST':
-        serializer = ResgistrationSerializer(data=request.data)
-        data = {} 
-
+    def post(self, request, format=None):
+        serializer = ApiSerializer(data=request.data)
         if serializer.is_valid():
-            account = serializer.save() 
-            
-            data["response"] = "Succesful Registered" 
-            data["username"] = account.username 
-            data["email"] = account.email 
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-            token = Token.objects.get(user=account).key
-            data["token"] = token 
-            
-        else:
-            data = serializer.errors 
 
-        return Response(data) 
+class ProductDetailAPIView(APIView):
+    """Allows to 'GET' 'UPDATE' or 'DELETE' an specific product"""
 
-    
+    def get_object_pk(self, pk):
+        "gets a ProductModel instance pk"
+        try:
+            return ProductModel.objects.get(pk=pk)
+        except ProductModel.DoesNotExist:
+            raise Http404
         
+    def get(self, request, pk, format=None):
+        product = self.get_object_pk(pk)
+        serializer = ApiSerializer(product)
+        return Response(serializer.data)
+    
+    def put(self, request, pk, format=None):
+        product = self.get_object_pk(pk)
+        serializer = ApiSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk, format=None):
+        product = self.get_object_pk(pk)
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+#ViewSet
+class ProductApiViewSet(ViewSet):
+    """API ViewSet"""
+
+    def list(self, request, format=None):
+        """Enlists the products stored in the DB""" 
+        products = ProductModel.objects.all()
+        serializer = ApiSerializer(products, many=True)
+        return Response(serializer.data)
+    
+    def create(self, request, format=None):
+        """Creates a new product(instance) and stores it in the DB"""
+        serializer = ApiSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get_object_pk(self, pk):
+        "gets a ProductModel instance pk"
+        try:
+            return ProductModel.objects.get(pk=pk)
+        except ProductModel.DoesNotExist:
+            raise Http404
+        
+    def retrieve(self, request, pk, format=None):
+        """Gets a single product base on its ID"""
+        product = self.get_object_pk(pk)
+        serializer = ApiSerializer(product)
+        return Response(serializer.data)
+    
+    def update(self, request, pk, format=None):
+        """Updates a single product from the DB"""
+        product = self.get_object_pk(pk)
+        serializer = ApiSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, pk, format=None):
+        """Deletes a simgle product from the DB"""
+        product = self.get_object_pk(pk)
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+#Pagination/ Authentication
+class ProductAPIListView(generics.ListAPIView):
+    queryset = ProductModel.objects.all()
+    serializer_class = ApiSerializer
+    pagination_class = ProductModelPagination
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+
+
+#Vista del perfil del usuario    
+class UserProfile(APIView):
+    """Allows to 'GET' a single user profile"""
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+    def get_object(self, pk):
+        obj = get_object_or_404(User, pk=pk)
+        self.check_object_permissions(self.request, obj)
+        return obj
+    
+    def get(self, request, pk, format=None):
+        user_profile = self.get_object(pk)
+        serializer = UserModelSerializer(user_profile)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        """Updates a single product from the DB"""
+        user_profile = self.get_object(pk)
+        serializer = UserModelSerializer(user_profile, data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

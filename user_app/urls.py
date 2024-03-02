@@ -1,15 +1,21 @@
-from django.urls import path
-from rest_framework.authtoken.views import obtain_auth_token
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from .views import registration_view, logout_view, user_profile_registration_view
+from .views import(
+    ProductAPIView,
+    ProductDetailAPIView,
+    ProductApiViewSet,
+    ProductAPIListView,
+    UserProfile
+)
+
+router = DefaultRouter() 
+router.register("api-setview", ProductApiViewSet, basename="api-setview")
 
 urlpatterns = [
-    #path("login/", obtain_auth_token), #Vista por default
-    path("register/", registration_view),
-    #path("logout/", logout_view)
-
-    path("token/", TokenObtainPairView.as_view()),
-    path("token/refresh", TokenRefreshView.as_view()),
-    path("profile-token", user_profile_registration_view)
+    path("", ProductAPIView.as_view(), name="api_list"),
+    path("<int:pk>", ProductDetailAPIView.as_view(), name="api_detail"),
+    path("", include(router.urls)),
+    path("pagination-view", ProductAPIListView.as_view(), name="pagination_view"),
+    path("user-profile/<int:pk>", UserProfile.as_view(), name="user-profile") # <<----- Actividad
 ]
